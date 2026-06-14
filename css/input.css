@@ -4,7 +4,7 @@
 
 @theme {
   --font-sans: "Barlow Condensed", sans-serif;
-  --animate-scroll-horizontal: scroll-horizontal 20s linear infinite;
+  --animate-scroll-horizontal: scroll-horizontal 40s linear infinite;
 
   @keyframes scroll-horizontal {
     0% { transform: translateX(0); }
