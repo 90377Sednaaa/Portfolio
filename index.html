@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth scroll-pt-20 scrollbar-none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,8 +37,8 @@
 
     <main id="main" class="max-w-5xl mx-auto px-6 pt-40">
       <section id="hero" class="max-w-6xl mx-auto pt-24 pb-16">
-        <div class="grid grid-cols-2 gap-12 items-center">
-          <div class="flex flex-col gap-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="flex flex-col order-last lg:order-0 gap-6">
             <h1 class="font-bold text-7xl uppercase leading-tight">
               > Hello, I am<br />Lean
               <span class="bg-black text-white px-2">Murillo.</span>
@@ -52,15 +52,16 @@
 
             <div class="flex items-center gap-7 mt-4">
               <a
-                href="#project"
+                href="#projects"
                 class="px-6 py-3 max-w-fit bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors shadow-lg"
               >
                 View My Work
               </a>
 
               <a
-                href="#project"
+                href="assets/Resume/Resume.docx.pdf"
                 class="flex items-center gap-3 px-3 py-1 max-w-fit font-medium text-stone-900 hover:text-stone-600 transition-colors group"
+                download="Murillo_Resume.pdf"
               >
                 Download CV
                 <span
@@ -70,7 +71,7 @@
               </a>
             </div>
           </div>
-          <div class="relative w-full max-w-md ml-auto">
+          <div class="relative order-1 lg:order-0 w-full max-w-md ml-auto">
             <div
               class="bg-stone-900 border border-stone-700 rounded-xl aspect-[4/3] relative overflow-hidden shadow-2xl group"
             >
@@ -116,7 +117,7 @@
         </div>
       </section>
 
-      <section id="about" class="mt-70 max-w-6xl mx-auto px-6">
+      <section id="about" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
         <div class="reveal flex items-center gap-6">
           <div class="text-xl uppercase tracking-widest">About</div>
           <div
@@ -133,16 +134,16 @@
           intersection of systems thinking and visual craft — I care about the
           grid as much as the pixel, the component as much as the concept.
         </p>
-
         <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
-            class="p-8 rounded-xl border border-stone-800 bg-stone-900/40 hover:bg-stone-900 hover:border-cyan-400/50 transition-all duration-300 group"
+            class="p-8 rounded-xl border transition-all duration-300 group bg-stone-900 border-cyan-400/50 md:bg-stone-900/40 md:border-stone-800 md:hover:bg-stone-900 md:hover:border-cyan-400/50"
           >
             <div
               class="text-cyan-400 text-sm uppercase tracking-wider mb-5 flex items-center justify-between"
             >
               <span>01 // History</span>
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity"
+              <span
+                class="transition-opacity opacity-100 md:opacity-0 md:group-hover:opacity-100"
                 >↗</span
               >
             </div>
@@ -156,13 +157,14 @@
           </div>
 
           <div
-            class="p-8 rounded-xl border border-stone-800 bg-stone-900/40 hover:bg-stone-900 hover:border-green-400/50 transition-all duration-300 group"
+            class="p-8 rounded-xl border transition-all duration-300 group bg-stone-900 border-green-400/50 md:bg-stone-900/40 md:border-stone-800 md:hover:bg-stone-900 md:hover:border-green-400/50"
           >
             <div
               class="text-green-400 text-sm uppercase tracking-wider mb-5 flex items-center justify-between"
             >
               <span>02 // Near Future</span>
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity"
+              <span
+                class="transition-opacity opacity-100 md:opacity-0 md:group-hover:opacity-100"
                 >↗</span
               >
             </div>
@@ -184,13 +186,14 @@
           </div>
 
           <div
-            class="p-8 rounded-xl border border-stone-800 bg-stone-900/40 hover:bg-stone-900 hover:border-yellow-300/50 transition-all duration-300 group"
+            class="p-8 rounded-xl border transition-all duration-300 group bg-stone-900 border-yellow-300/50 md:bg-stone-900/40 md:border-stone-800 md:hover:bg-stone-900 md:hover:border-yellow-300/50"
           >
             <div
               class="text-yellow-300 text-sm uppercase tracking-wider mb-5 flex items-center justify-between"
             >
               <span>03 // Vision</span>
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity"
+              <span
+                class="transition-opacity opacity-100 md:opacity-0 md:group-hover:opacity-100"
                 >↗</span
               >
             </div>
@@ -205,13 +208,23 @@
         </div>
       </section>
 
-      <section id="skills" class="mt-70 max-w-6xl mx-auto px-6">
+      <section id="skills" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
         <div class="flex items-center w-full h-full gap-6">
           <div class="text-xl uppercase tracking-widest">Skills</div>
           <div
             class="w-16 h-[2px] bg-green-400 shadow-[0_0_8px_rgba(103,232,249,0.5)]"
           ></div>
         </div>
+        <h1 class="text-5xl md:text-6xl mt-4 font-bold">
+          The Technical Arsenal
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-stone-800">
+          A robust blend of front-end finesse and back-end logic. My toolkit is
+          built around modern utility frameworks like Tailwind CSS, grounded in
+          solid object-oriented programming, and expanded by an active curiosity
+          in machine learning and data analytics.
+        </p>
         <!--Banners -->
         <div class="overflow-hidden relative flex justify-center">
           <div
@@ -954,14 +967,22 @@
         </div>
       </section>
 
-      <section id="projects" class="mt-70 max-w-6xl mx-auto px-6">
+      <section id="projects" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
         <div class="flex items-center w-full h-full gap-6">
           <div class="text-xl uppercase tracking-widest">Projects</div>
           <div
             class="w-16 h-[2px] bg-red-400 shadow-[0_0_8px_rgba(103,232,249,0.5)]"
           ></div>
         </div>
+        <h1 class="text-5xl md:text-6xl mt-4 font-bold">Selected Works</h1>
 
+        <p class="mt-6 mb-12 max-w-2xl text-lg leading-relaxed text-stone-800">
+          From architecting secure inventory management systems to training
+          machine learning models for cybersecurity detection, here is a
+          collection of my recent builds. These projects reflect my drive to
+          solve complex problems through clean code, intuitive design, and
+          scalable architecture.
+        </p>
         <div class="grid mt-6 grid-cols-1 md:grid-cols-2 gap-6">
           <div
             class="bg-[#dbd0b0] border border-gray-400/30 rounded-2xl w-full flex flex-col overflow-hidden"
@@ -970,7 +991,7 @@
               <div id="NCB1" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/NCB LOGIN.png"
-                  class="w-full object-cover"
+                  class="w-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -990,7 +1011,7 @@
               <div id="NCB2" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/NCB LANDIGN.png"
-                  class="w-full object-cover"
+                  class="w-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -1010,7 +1031,7 @@
               <div id="NCB3" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/NCB BOOKS.png"
-                  class="w-full object-cover"
+                  class="w-full h-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -1030,7 +1051,7 @@
               <div id="NCB4" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/NCB ADMIN.png"
-                  class="w-full object-cover"
+                  class="w-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -1083,7 +1104,7 @@
               <div class="grid grid-cols-2 text-center w-full mt-5 gap-5">
                 <a
                   class="flex items-center btn rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://github.com/DioVale2002/ProjectNiLeanRyleugDionard"
                   ><svg
                     width="15px"
                     height="15px"
@@ -1123,7 +1144,7 @@
                 >
                 <a
                   class="btn flex items-center rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://newcenturybooks.onrender.com/"
                 >
                   <svg
                     width="15px"
@@ -1156,7 +1177,7 @@
               <div id="XG1" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/XG BOOST.png"
-                  class="w-full object-cover"
+                  class="w-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -1176,7 +1197,7 @@
               <div id="XG2" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/XG BOOST ANALYZE.png"
-                  class="w-full object-cover"
+                  class="w-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -1196,7 +1217,7 @@
               <div id="XG3" class="carousel-item relative w-full">
                 <img
                   src="./assets/projects/XG BOOST RESULT.png"
-                  class="w-full object-cover"
+                  class="w-full object-fill"
                 />
                 <div
                   class="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 transform justify-between"
@@ -1245,7 +1266,7 @@
               <div class="grid grid-cols-2 text-center w-full mt-5 gap-5">
                 <a
                   class="flex items-center btn rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://github.com/90377Sednaaa/XGBoost-Phishing-Detector"
                   ><svg
                     width="15px"
                     height="15px"
@@ -1285,7 +1306,7 @@
                 >
                 <a
                   class="btn flex items-center rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://huggingface.co/spaces/Sedna90377/Phishing-Detector"
                 >
                   <svg
                     width="15px"
@@ -1315,11 +1336,41 @@
             class="bg-[#dbd0b0] border border-gray-400/30 rounded-2xl w-full flex flex-col overflow-hidden"
           >
             <div class="carousel w-full h-[220px] bg-gray-800">
-              <div
-                id="PAO1"
-                class="carousel-item relative w-full flex items-center justify-center text-gray-400"
-              >
-                [PaoPals Images Here]
+              <div id="PAO1" class="carousel-item relative w-full">
+                <img
+                  src="/assets/projects/PAO1.jpg"
+                  class="w-full object-contain"
+                />
+                <div
+                  class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+                >
+                  <a href="#PAO3" class="btn btn-circle">❮</a>
+                  <a href="#PAO2" class="btn btn-circle">❯</a>
+                </div>
+              </div>
+              <div id="PAO2" class="carousel-item relative w-full">
+                <img
+                  src="assets/projects/PAO2.jpg"
+                  class="w-full object-contain"
+                />
+                <div
+                  class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+                >
+                  <a href="#PAO1" class="btn btn-circle">❮</a>
+                  <a href="#PAO3" class="btn btn-circle">❯</a>
+                </div>
+              </div>
+              <div id="PAO3" class="carousel-item relative w-full">
+                <img
+                  src="assets/projects/PAO3.jpg"
+                  class="w-full object-fill"
+                />
+                <div
+                  class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+                >
+                  <a href="#PAO2" class="btn btn-circle">❮</a>
+                  <a href="#PAO1" class="btn btn-circle">❯</a>
+                </div>
               </div>
             </div>
             <div class="p-5 flex flex-col flex-1">
@@ -1350,7 +1401,7 @@
               <div class="grid grid-cols-2 text-center w-full mt-5 gap-5">
                 <a
                   class="flex items-center btn rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://github.com/DMzRs/CSE7_PaoPals"
                   ><svg
                     width="15px"
                     height="15px"
@@ -1388,9 +1439,8 @@
                   </svg>
                   <span>Github</span></a
                 >
-                <a
-                  class="btn flex items-center rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                <button
+                  class="btn cursor-not-allowed flex items-center rounded-2xl w-full btn-sm btn-outline"
                 >
                   <svg
                     width="15px"
@@ -1410,8 +1460,8 @@
                       />
                     </g>
                   </svg>
-                  <span>Live Demo</span></a
-                >
+                  <span>Live Demo</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1467,7 +1517,7 @@
               <div class="grid grid-cols-2 text-center w-full mt-5 gap-5">
                 <a
                   class="flex items-center btn rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://github.com/90377Sednaaa/Stress-Level-Prediction"
                   ><svg
                     width="15px"
                     height="15px"
@@ -1507,7 +1557,7 @@
                 >
                 <a
                   class="btn flex items-center rounded-2xl w-full btn-sm btn-outline"
-                  href="#"
+                  href="https://student-stress-level-prediction.streamlit.app/"
                 >
                   <svg
                     width="15px"
@@ -1559,7 +1609,7 @@
         >
           <span
             class="mono text-[10px] tracking-[0.15em] uppercase text-stone-600"
-            >Available for work · Response &lt; 24h</span
+            >Available for Intern · Response &lt; 24h</span
           >
         </div>
 
@@ -1698,7 +1748,7 @@
 
             <div class="border-t border-stone-800/20 pt-8">
               <div
-                class="mono text-[9px] tracking-[0.14em] uppercase text-stone-400 mb-4"
+                class="mono text-[9px] tracking-[0.14em] uppercase text-black mb-4"
               >
                 What I'm open to
               </div>
@@ -1737,14 +1787,14 @@
       <!-- FOOTER -->
 
       <div class="max-w-5xl mx-auto px-8">
-        <div class="flex flex-1 w-full h-1 rounded-sm overflow-hidden">
-          <span class="bg-[#00f0e0] h-1"></span>
+        <div class="flex w-full h-1 rounded-sm overflow-hidden">
+          <span class="bg-[#00f0e0] flex-1 h-1"></span>
 
-          <span class="bg-[#4dff6e] h-1"></span>
+          <span class="bg-[#4dff6e] flex-1 h-1"></span>
 
-          <span class="bg-[#ffe94d] h-1"></span>
+          <span class="bg-[#ffe94d] flex-1 h-1"></span>
 
-          <span class="bg-[#ff3b3b] h-1"></span>
+          <span class="bg-[#ff3b3b] flex-1 h-1"></span>
         </div>
       </div>
 
@@ -1770,28 +1820,5 @@
         </div>
       </footer>
     </main>
-    <script>
-      function toggleChip(el) {
-        const active = el.getAttribute("data-active") === "true";
-
-        if (active) {
-          el.removeAttribute("data-active");
-
-          el.style.background = "";
-
-          el.style.color = "";
-
-          el.style.borderColor = "";
-        } else {
-          el.setAttribute("data-active", "true");
-
-          el.style.background = "rgba(0,240,224,0.12)";
-
-          el.style.color = "#00f0e0";
-
-          el.style.borderColor = "rgba(0,240,224,0.5)";
-        }
-      }
-    </script>
   </body>
 </html>
