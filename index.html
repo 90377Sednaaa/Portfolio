@@ -5,38 +5,1359 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./assets/images/Favicon.png" />
     <link rel="stylesheet" href="./css/output.css" />
-    <title>Sedna</title>
+    <title>Lean Murillo | Front-End Developer</title>
   </head>
-  <body class="bg-[#EBE4D1] text-gray-900">
-    <header
+  <body class="bg-[#F4EFE6] text-[#161514] antialiased selection:bg-[#E9A825] selection:text-[#161514]">
+
+    <!-- CRT / CASSETTE TRANSITION OVERLAY -->
+    <div
+      id="crt-transition-overlay"
+      class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-200 bg-[#161514]/90 flex flex-col items-center justify-center crt-scanlines"
+      aria-hidden="true"
+    >
+      <div class="relative flex flex-col items-center gap-3 p-6 bg-[#1F1E1C] border-2 border-[#161514] rounded-md shadow-[6px_6px_0_#161514]">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#E9A825]"></span>
+          <span class="font-mono text-xs tracking-widest text-[#E9A825] uppercase font-bold">SWITCHING PORTFOLIO EDITION</span>
+        </div>
+        <div class="h-1 w-48 bg-stone-800 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-[#E9A825] via-[#D85827] to-[#C6332E]"></div>
+        </div>
+        <span class="font-mono text-[10px] text-stone-400 uppercase tracking-wider">LOADING INTERFACE...</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VINTAGE CASSETTE PACKAGING PORTFOLIO (1984 ANALOG EDITION)   -->
+    <!-- ============================================================ -->
+    <div id="portfolio-new" class="min-h-screen bg-[#F4EFE6] text-[#161514] font-sans technical-grid relative pb-24">
+
+      <!-- MASTER HEADER -->
+      <header class="w-full fixed top-0 left-0 z-50 bg-[#F4EFE6]/95 backdrop-blur-md border-b-2 border-[#161514] px-4 sm:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <!-- Brand Name & Professional Title (Clean, no black LM square) -->
+          <a href="#hero" class="flex flex-col group">
+            <span class="font-display font-bold text-2xl sm:text-3xl tracking-wide leading-none text-[#161514] uppercase group-hover:text-[#D85827] transition-colors">
+              Lean Murillo
+            </span>
+            <span class="font-mono text-[10px] tracking-widest text-[#78716C] uppercase mt-0.5 font-semibold">
+              Front-End Developer
+            </span>
+          </a>
+
+          <!-- Primary Navigation (Clean, grounded recruiter labels) -->
+          <nav class="hidden lg:flex items-center gap-7 font-mono text-xs tracking-wider uppercase font-semibold text-[#57534E]">
+            <a href="#about" class="hover:text-[#C6332E] transition-colors">
+              About
+            </a>
+            <a href="#experience" class="hover:text-[#D85827] transition-colors">
+              Experience
+            </a>
+            <a href="#projects" class="hover:text-[#E9A825] transition-colors">
+              Selected Projects
+            </a>
+            <a href="#skills" class="hover:text-[#2B6B82] transition-colors">
+              Technical Skills
+            </a>
+            <a href="#credentials" class="hover:text-[#872041] transition-colors">
+              Certifications
+            </a>
+            <a href="#contact" class="hover:text-[#161514] transition-colors">
+              Contact
+            </a>
+          </nav>
+
+          <div class="flex items-center gap-2">
+            <!-- Portfolio Version Switcher Controls -->
+            <div class="flex items-center bg-[#E5DCB8] border-2 border-[#161514] rounded p-1 gap-1 shadow-[2px_2px_0_#161514]">
+              <button
+                data-switch-version="new"
+                class="tactile-button-sm px-3 py-1 text-[11px] font-mono font-bold uppercase rounded-sm transition-all flex items-center gap-1.5 active-version bg-[#161514] text-[#F4EFE6]"
+                aria-pressed="true"
+                title="Vintage Cassette Edition"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-[#E9A825]" data-version-dot></span>
+                <span>NEW</span>
+              </button>
+              <button
+                data-switch-version="old"
+                class="tactile-button-sm px-3 py-1 text-[11px] font-mono font-bold uppercase rounded-sm text-[#57534E] hover:text-[#161514] transition-all flex items-center gap-1.5"
+                aria-pressed="false"
+                title="Classic Portfolio"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-[#E9A825] hidden" data-version-dot></span>
+                <span>CLASSIC</span>
+              </button>
+            </div>
+
+            <!-- Mobile Menu Toggle Button (For < lg screens) -->
+            <button
+              id="mobile-menu-btn"
+              class="lg:hidden tactile-button-sm p-1.5 bg-[#FAF7F2] border-2 border-[#161514] rounded text-[#161514] flex items-center justify-center cursor-pointer shadow-[2px_2px_0_#161514]"
+              aria-label="Toggle Navigation Menu"
+              aria-expanded="false"
+            >
+              <svg class="w-5 h-5 menu-open-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg class="w-5 h-5 menu-close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t-2 border-[#161514] mt-3.5 pt-3 pb-2 px-2">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#57534E]">
+            <a href="#about" class="p-2 bg-[#FAF7F2] border border-[#161514]/20 rounded-xs hover:text-[#C6332E] hover:border-[#161514] transition-colors flex items-center justify-between">
+              <span>About</span>
+              <span class="text-[#78716C]">01</span>
+            </a>
+            <a href="#experience" class="p-2 bg-[#FAF7F2] border border-[#161514]/20 rounded-xs hover:text-[#D85827] hover:border-[#161514] transition-colors flex items-center justify-between">
+              <span>Experience</span>
+              <span class="text-[#78716C]">02</span>
+            </a>
+            <a href="#projects" class="p-2 bg-[#FAF7F2] border border-[#161514]/20 rounded-xs hover:text-[#E9A825] hover:border-[#161514] transition-colors flex items-center justify-between">
+              <span>Projects</span>
+              <span class="text-[#78716C]">03</span>
+            </a>
+            <a href="#skills" class="p-2 bg-[#FAF7F2] border border-[#161514]/20 rounded-xs hover:text-[#2B6B82] hover:border-[#161514] transition-colors flex items-center justify-between">
+              <span>Skills</span>
+              <span class="text-[#78716C]">04</span>
+            </a>
+            <a href="#credentials" class="p-2 bg-[#FAF7F2] border border-[#161514]/20 rounded-xs hover:text-[#872041] hover:border-[#161514] transition-colors flex items-center justify-between">
+              <span>Certs</span>
+              <span class="text-[#78716C]">05</span>
+            </a>
+            <a href="#contact" class="p-2 bg-[#FAF7F2] border border-[#161514]/20 rounded-xs hover:text-[#161514] hover:border-[#161514] transition-colors flex items-center justify-between">
+              <span>Contact</span>
+              <span class="text-[#78716C]">06</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN CONTAINER -->
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+
+        <!-- ============================================================ -->
+        <!-- SECTION 1: HERO (VINTAGE CASSETTE PACKAGING)                 -->
+        <!-- ============================================================ -->
+        <section id="hero" class="min-h-[calc(100dvh-5rem)] flex items-center pt-8 pb-12">
+          <div class="w-full grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Hero Left Column: Editorial & Technical Stack -->
+            <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+              
+              <!-- Technical Header Strip -->
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="inline-flex items-center gap-2 bg-[#161514] text-[#F4EFE6] px-2.5 py-1 rounded-sm font-mono text-[11px] uppercase tracking-wider font-semibold">
+                  <span class="w-2 h-2 rounded-full bg-[#E9A825]"></span>
+                  <span>PORTFOLIO 2026</span>
+                </div>
+                <div class="h-4 w-[2px] bg-[#161514]/20 hidden sm:block"></div>
+                <span class="font-mono text-xs text-[#57534E] tracking-wider uppercase font-medium">
+                  FRONT-END ENGINEERING & UI SYSTEMS
+                </span>
+              </div>
+
+              <!-- Main Display Headline (Clean balanced tracking, no collisions) -->
+              <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl uppercase tracking-[0.055em] sm:tracking-[0.07em] leading-[1.04] text-[#161514]">
+                Lean Murillo<br />
+                <span class="text-[#C6332E]">Front-End Developer</span>
+              </h1>
+
+              <!-- Subtext (Concise value proposition) -->
+              <p class="text-base sm:text-lg text-[#44403C] leading-relaxed max-w-xl font-normal">
+                Computer Science student at the University of Mindanao specializing in front-end development, responsive UI engineering, and accessible web experiences.
+              </p>
+
+              <!-- CTAs (1 Primary + 1 Secondary) -->
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href="#projects"
+                  class="tactile-button bg-[#161514] text-[#F4EFE6] hover:bg-[#282724] border-2 border-[#161514] px-6 py-3 font-mono font-bold text-xs uppercase tracking-wider rounded-sm flex items-center gap-2 group"
+                >
+                  <span>Explore Projects</span>
+                  <span class="text-[#E9A825] group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+
+                <a
+                  href="assets/Resume/Resume.docx.pdf"
+                  download="Murillo_Resume.pdf"
+                  class="tactile-button bg-[#E5DCB8] text-[#161514] hover:bg-[#DDD4C4] border-2 border-[#161514] px-5 py-3 font-mono font-bold text-xs uppercase tracking-wider rounded-sm flex items-center gap-2 group"
+                >
+                  <span>Download Resume</span>
+                  <svg class="w-3.5 h-3.5 text-[#161514] group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Retro Technical Metadata Strip -->
+              <div class="pt-4 border-t-2 border-[#161514]/15 grid grid-cols-3 gap-4 font-mono text-[11px] text-[#57534E]">
+                <div>
+                  <div class="text-[9px] uppercase text-[#78716C] tracking-widest">EDUCATION</div>
+                  <div class="font-bold text-[#161514]">Univ. of Mindanao</div>
+                </div>
+                <div>
+                  <div class="text-[9px] uppercase text-[#78716C] tracking-widest">LOCATION</div>
+                  <div class="font-bold text-[#161514]">Davao City, PH</div>
+                </div>
+                <div>
+                  <div class="text-[9px] uppercase text-[#78716C] tracking-widest">SPECIALTY</div>
+                  <div class="font-bold text-[#161514]">UI & Systems</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Hero Right Column: Authentic Vintage Japanese Cassette Tape (Sony Dynamicron / Sakura Chroma Style) -->
+            <div class="lg:col-span-5 relative">
+              
+              <!-- Outer Cassette Housing / Chassis -->
+              <div class="relative bg-[#1A1918] border-2 border-[#161514] rounded-2xl p-5 sm:p-6 shadow-[10px_10px_0_#161514] overflow-hidden transition-all duration-200 group">
+                
+                <!-- Corner Machine Screws (Authentic Cassette Chassis Details) -->
+                <div class="absolute top-3 left-3 w-2.5 h-2.5 rounded-full bg-[#2E2C29] border border-[#484540] flex items-center justify-center">
+                  <span class="w-1.5 h-[1px] bg-[#66625B]"></span>
+                </div>
+                <div class="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-[#2E2C29] border border-[#484540] flex items-center justify-center">
+                  <span class="w-1.5 h-[1px] bg-[#66625B]"></span>
+                </div>
+                <div class="absolute bottom-3 left-3 w-2.5 h-2.5 rounded-full bg-[#2E2C29] border border-[#484540] flex items-center justify-center">
+                  <span class="w-1.5 h-[1px] bg-[#66625B]"></span>
+                </div>
+                <div class="absolute bottom-3 right-3 w-2.5 h-2.5 rounded-full bg-[#2E2C29] border border-[#484540] flex items-center justify-center">
+                  <span class="w-1.5 h-[1px] bg-[#66625B]"></span>
+                </div>
+
+                <!-- Cassette Faceplate (Warm Japanese Cream Paper J-Card) -->
+                <div class="bg-[#F4EFE6] border-2 border-[#161514] rounded-xl p-4 sm:p-5 text-[#161514] shadow-inner relative">
+                  
+                  <!-- Cassette Top Header Bar -->
+                  <div class="flex items-center justify-between border-b-2 border-[#161514] pb-2.5 mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="font-display font-black text-2xl sm:text-3xl tracking-wider uppercase text-[#161514] leading-none">CHROMA</span>
+                      <span class="font-mono text-[10px] bg-[#161514] text-[#F4EFE6] px-1.5 py-0.5 rounded-xs font-bold">TYPE I</span>
+                      <span class="font-mono text-[10px] text-[#78716C] border border-[#78716C]/40 px-1 rounded-xs hidden sm:inline uppercase font-semibold">HIGH OUTPUT</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-[10px] text-[#57534E] font-bold hidden sm:inline">NORMAL BIAS · 120 µs</span>
+                      <!-- Authentic Bold HQ Badge -->
+                      <div class="w-8 h-8 bg-[#C6332E] text-white flex items-center justify-center font-display font-black text-lg rounded-xs shadow-[2px_2px_0_#161514]">
+                        HQ
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Authentic Muted 5-Color Racing Stripes (Sony Dynamicron / Sakura Chroma Palette) -->
+                  <div class="h-2.5 w-full tape-stripes-horizontal rounded-xs mb-3.5 border border-[#161514]/20"></div>
+
+                  <!-- Central Smoked Magnetic Tape Viewing Chamber -->
+                  <div class="relative bg-[#141312] rounded-lg border-2 border-[#161514] p-3 sm:p-4 my-2 overflow-hidden shadow-inner" id="cassette-tape-chamber">
+                    <!-- Subtle Interior Tape Guidance Shadow -->
+                    <div class="absolute inset-x-8 inset-y-2 bg-[#261715] rounded-full opacity-75"></div>
+
+                    <div class="relative z-10 flex items-center justify-between">
+                      
+                      <!-- Left Reel (Supply Spool with Magnetic Tape Pack) -->
+                      <div class="flex items-center gap-2">
+                        <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#EBE4D5] border-2 border-[#2B2A27] flex items-center justify-center reel-rotating group-hover:reel-rotating-hover shadow-md" data-tape-reel>
+                          <!-- Outer Magnetic Tape Coil Ring -->
+                          <div class="absolute inset-0 rounded-full border-4 border-[#3D231E]"></div>
+                          <!-- Center Hub Drive -->
+                          <div class="w-6 h-6 rounded-full bg-[#161514] flex items-center justify-center border border-stone-600">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#EBE4D5]"></div>
+                          </div>
+                          <!-- 6 Mechanical Reel Spokes -->
+                          <div class="absolute inset-0 flex items-center justify-center pointer-events-none"><div class="w-10 h-0.5 bg-stone-500"></div></div>
+                          <div class="absolute inset-0 flex items-center justify-center pointer-events-none rotate-60"><div class="w-10 h-0.5 bg-stone-500"></div></div>
+                          <div class="absolute inset-0 flex items-center justify-center pointer-events-none -rotate-60"><div class="w-10 h-0.5 bg-stone-500"></div></div>
+                        </div>
+                      </div>
+
+                      <!-- Center Ruler Index Scale -->
+                      <div class="flex flex-col items-center justify-center gap-1 font-mono text-[9px] text-[#A8A29E] select-none">
+                        <div class="flex items-center gap-1">
+                          <span class="w-1 h-3 bg-stone-600"></span>
+                          <span class="w-0.5 h-2 bg-stone-500"></span>
+                          <span class="w-0.5 h-2 bg-stone-500"></span>
+                          <span class="w-1 h-4 bg-[#E9A825]"></span>
+                          <span class="w-0.5 h-2 bg-stone-500"></span>
+                          <span class="w-0.5 h-2 bg-stone-500"></span>
+                          <span class="w-1 h-3 bg-stone-600"></span>
+                        </div>
+                        <div class="flex items-center gap-2 text-[8px] tracking-wider text-[#78716C] font-semibold">
+                          <span>100</span>
+                          <span>50</span>
+                          <span>0</span>
+                        </div>
+                        <span class="text-[8px] uppercase tracking-widest text-stone-400 font-mono">TAPE INDEX</span>
+                      </div>
+
+                      <!-- Right Reel (Take-up Spool) -->
+                      <div class="flex items-center gap-2">
+                        <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#EBE4D5] border-2 border-[#2B2A27] flex items-center justify-center reel-rotating group-hover:reel-rotating-hover shadow-md" data-tape-reel>
+                          <!-- Center Hub Drive -->
+                          <div class="w-6 h-6 rounded-full bg-[#161514] flex items-center justify-center border border-stone-600">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#EBE4D5]"></div>
+                          </div>
+                          <!-- 6 Mechanical Reel Spokes -->
+                          <div class="absolute inset-0 flex items-center justify-center pointer-events-none"><div class="w-10 h-0.5 bg-stone-500"></div></div>
+                          <div class="absolute inset-0 flex items-center justify-center pointer-events-none rotate-60"><div class="w-10 h-0.5 bg-stone-500"></div></div>
+                          <div class="absolute inset-0 flex items-center justify-center pointer-events-none -rotate-60"><div class="w-10 h-0.5 bg-stone-500"></div></div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!-- Cassette Faceplate Footer Metadata -->
+                  <div class="mt-3 pt-2 border-t border-[#161514]/20 flex items-center justify-between font-mono text-[10px] text-[#57534E]">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-[#161514]">LEAN MURILLO</span>
+                      <span class="text-[#78716C]">·</span>
+                      <span>STEREO CASSETTE</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span>DOLBY NR [ON]</span>
+                      <span class="font-bold text-[#161514]">120 µs EQ</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Bottom Cassette Shell Aperture (Authentic Guide Holes & Tape Head Cutout) -->
+                <div class="mt-4 pt-3 border-t border-[#2C2A28] flex items-center justify-between font-mono text-[10px] text-stone-500">
+                  <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-[#100F0E] border border-stone-700 shadow-inner"></span>
+                    <span class="w-4 h-4 rounded-full bg-[#100F0E] border border-stone-700 shadow-inner"></span>
+                    <span class="w-3 h-3 rounded-full bg-[#100F0E] border border-stone-700 shadow-inner"></span>
+                  </div>
+
+                  <div class="flex items-center gap-2 text-[9px] uppercase tracking-widest text-stone-400 font-semibold">
+                    <span>HIGH FIDELITY</span>
+                    <span class="text-[#E9A825]">·</span>
+                    <span>JAPAN HOUSING</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2: ABOUT / DEVELOPER PROFILE                         -->
+        <!-- ============================================================ -->
+        <section id="about" class="pt-20 pb-16 gsap-reveal-card">
+          
+          <!-- Section Heading -->
+          <div class="border-b-2 border-[#161514] pb-3 mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-[#78716C] font-semibold">
+                01. About Lean Murillo
+              </span>
+              <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase tracking-[0.05em] text-[#161514] mt-1">
+                Profile & Background
+              </h2>
+            </div>
+            
+            <div class="font-mono text-xs text-[#57534E]">
+              BSCS STUDENT · FRONT-END DEVELOPER
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left: Profile Photo & Academic Overview -->
+            <div class="lg:col-span-4 space-y-4">
+              <div class="bg-[#1F1E1C] border-2 border-[#161514] p-3 rounded shadow-[6px_6px_0_#161514]">
+                <!-- Photo Frame -->
+                <div class="relative aspect-[4/3] rounded overflow-hidden border border-stone-700 bg-black">
+                  <img
+                    src="./assets/images/Profile.jpg"
+                    alt="Lean Murillo"
+                    class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
+                  />
+                  <div class="absolute bottom-2 right-2 font-mono text-[9px] text-white/80 bg-black/70 px-1.5 py-0.5 rounded">
+                    DAVAO, PH
+                  </div>
+                </div>
+
+                <!-- Caption -->
+                <div class="mt-3 pt-2 border-t border-stone-700 flex justify-between font-mono text-[10px] text-stone-300">
+                  <span>LEAN MURILLO</span>
+                  <span class="text-[#E9A825]">UM BSCS</span>
+                </div>
+              </div>
+
+              <!-- Academic & Professional Background Card -->
+              <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] space-y-3 font-mono text-xs">
+                <div class="border-b border-[#161514]/15 pb-2.5">
+                  <div class="text-[9px] uppercase text-[#78716C] tracking-widest font-semibold">DEGREE PROGRAM</div>
+                  <div class="font-bold text-[#161514] text-sm mt-0.5">BS in Computer Science</div>
+                  <div class="text-[11px] text-[#57534E]">University of Mindanao</div>
+                </div>
+                <div class="border-b border-[#161514]/15 pb-2.5">
+                  <div class="text-[9px] uppercase text-[#78716C] tracking-widest font-semibold">CORE SPECIALTY</div>
+                  <div class="font-bold text-[#161514] mt-0.5">Front-End Engineering & UI Systems</div>
+                </div>
+                <div>
+                  <div class="text-[9px] uppercase text-[#78716C] tracking-widest font-semibold">LOCATION</div>
+                  <div class="font-bold text-[#161514] mt-0.5">Davao City, Philippines</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Bio & 3 Strategic Pillars -->
+            <div class="lg:col-span-8 space-y-6">
+              <div class="bg-[#FAF7F2] border-2 border-[#161514] p-6 sm:p-8 rounded shadow-[6px_6px_0_#161514] relative">
+                <h3 class="font-display font-bold text-2xl sm:text-3xl uppercase tracking-wide text-[#161514] mb-4">
+                  Systems Thinking × Visual Craftsmanship
+                </h3>
+                <p class="text-base sm:text-lg text-[#44403C] leading-relaxed font-normal">
+                  Three years of turning design systems into production code. I work at the intersection of systems architecture and visual craft, focusing on the pixel, the component, and the user experience. Currently pursuing a Bachelor of Science in Computer Science at the University of Mindanao.
+                </p>
+              </div>
+
+              <!-- 3 Structured Cards (Clean, muted, professional typography) -->
+              <div class="grid sm:grid-cols-3 gap-4">
+                
+                <!-- Card 1: Origin -->
+                <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded text-[#161514] shadow-[4px_4px_0_#161514]">
+                  <div class="flex items-center justify-between border-b border-[#161514]/15 pb-2 mb-3">
+                    <span class="font-mono text-xs font-bold text-[#78716C] uppercase tracking-wider">01. Origin</span>
+                    <span class="font-mono text-[10px] text-[#A8A29E]">Background</span>
+                  </div>
+                  <h4 class="font-display font-bold text-lg text-[#161514] uppercase mb-2">Digital Curiosities</h4>
+                  <p class="text-xs text-[#57534E] leading-relaxed">
+                    Started with a fascination for digital interfaces, evolving into web development, UI architecture, and creating purposeful software.
+                  </p>
+                </div>
+
+                <!-- Card 2: Objectives -->
+                <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded text-[#161514] shadow-[4px_4px_0_#161514]">
+                  <div class="flex items-center justify-between border-b border-[#161514]/15 pb-2 mb-3">
+                    <span class="font-mono text-xs font-bold text-[#78716C] uppercase tracking-wider">02. Objectives</span>
+                    <span class="font-mono text-[10px] text-[#A8A29E]">Production</span>
+                  </div>
+                  <h4 class="font-display font-bold text-lg text-[#161514] uppercase mb-2">Frontend Excellence</h4>
+                  <p class="text-xs text-[#57534E] leading-relaxed">
+                    Mastering state management in complex web apps, building accessible interfaces, and shipping clean production code.
+                  </p>
+                </div>
+
+                <!-- Card 3: Vision -->
+                <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded text-[#161514] shadow-[4px_4px_0_#161514]">
+                  <div class="flex items-center justify-between border-b border-[#161514]/15 pb-2 mb-3">
+                    <span class="font-mono text-xs font-bold text-[#78716C] uppercase tracking-wider">03. Vision</span>
+                    <span class="font-mono text-[10px] text-[#A8A29E]">Architecture</span>
+                  </div>
+                  <h4 class="font-display font-bold text-lg text-[#161514] uppercase mb-2">Design Systems</h4>
+                  <p class="text-xs text-[#57534E] leading-relaxed">
+                    Leading front-end engineering teams to architect scalable design systems that uphold performance, accessibility, and craft.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3: OJT / INTERNSHIP EXPERIENCE (NURSEWAY)            -->
+        <!-- ============================================================ -->
+        <section id="experience" class="pt-20 pb-16 gsap-reveal-card">
+          
+          <!-- Section Heading -->
+          <div class="border-b-2 border-[#161514] pb-3 mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-[#78716C] font-semibold">
+                02. Experience
+              </span>
+              <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase tracking-[0.05em] text-[#161514] mt-1">
+                OJT & Internship Experience
+              </h2>
+            </div>
+
+            <div class="font-mono text-xs text-[#57534E]">
+              INFINITY HUB · NURSEWAY
+            </div>
+          </div>
+
+          <!-- Master Experience Box (Infinity Hub / NurseWay) -->
+          <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg p-6 sm:p-8 shadow-[8px_8px_0_#161514] overflow-hidden relative">
+            
+            <!-- Subtle Vintage Tape Accent Strip -->
+            <div class="h-1.5 w-full tape-stripes-horizontal rounded-t-sm mb-6 opacity-75"></div>
+
+            <!-- Top Header & Role Badge -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b-2 border-[#161514]/15">
+              <div>
+                <span class="font-mono text-xs font-bold uppercase text-[#F4EFE6] bg-[#161514] px-2.5 py-1 rounded tracking-wider">
+                  Full-Stack Developer Intern
+                </span>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl text-[#161514] uppercase tracking-[0.04em] mt-2">
+                  Infinity Hub (NurseWay)
+                </h3>
+              </div>
+
+              <!-- Badges & Official Website Link -->
+              <div class="flex flex-wrap items-center gap-3">
+                <!-- OFFICIAL LIVE SITE LINK (CRITICAL REQUIREMENT) -->
+                <a
+                  href="https://nursewayllc.info/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="tactile-button-sm inline-flex items-center gap-2 bg-[#161514] text-[#F4EFE6] hover:bg-[#D85827] px-3.5 py-1.5 rounded-sm font-mono text-xs uppercase font-bold transition-all border border-[#161514] shadow-[2px_2px_0_#161514]"
+                  title="Visit official NurseWay live website"
+                >
+                  <span class="w-2 h-2 rounded-full bg-[#E9A825]"></span>
+                  <span>Official Live Site</span>
+                  <span class="text-[#E9A825]">↗</span>
+                </a>
+
+                <span class="font-mono text-xs font-bold text-[#161514] bg-[#E5DCB8] border border-[#161514] px-3 py-1.5 rounded-sm">
+                  Jul 2026 - Aug 2026
+                </span>
+              </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 pt-6 items-start">
+              
+              <!-- Left: 5 Factual Accomplishments strictly from Resume -->
+              <div class="lg:col-span-7 space-y-4 font-sans text-sm sm:text-base text-[#44403C]">
+                
+                <div class="flex items-start gap-3 bg-white border border-[#161514]/15 p-4 rounded-sm shadow-xs hover:border-[#161514] transition-colors">
+                  <span class="font-mono text-xs text-[#F4EFE6] bg-[#161514] px-2 py-0.5 rounded font-bold mt-0.5">01</span>
+                  <p class="leading-relaxed">
+                    Onboarded onto the NurseWay platform, reviewing the codebase and mapping out a roadmap of UI/UX and feature improvements.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3 bg-white border border-[#161514]/15 p-4 rounded-sm shadow-xs hover:border-[#161514] transition-colors">
+                  <span class="font-mono text-xs text-[#F4EFE6] bg-[#161514] px-2 py-0.5 rounded font-bold mt-0.5">02</span>
+                  <p class="leading-relaxed">
+                    Rebuilt and polished admin, employer, and candidate interfaces: card/icon animations, skeleton loaders, responsive layouts, and reusable table, form, and pagination components.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3 bg-white border border-[#161514]/15 p-4 rounded-sm shadow-xs hover:border-[#161514] transition-colors">
+                  <span class="font-mono text-xs text-[#F4EFE6] bg-[#161514] px-2 py-0.5 rounded font-bold mt-0.5">03</span>
+                  <p class="leading-relaxed">
+                    Shipped major features including multi-currency support, a career guide management system, candidate verification tools, and a redesigned talent search with an improved matching algorithm.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3 bg-white border border-[#161514]/15 p-4 rounded-sm shadow-xs hover:border-[#161514] transition-colors">
+                  <span class="font-mono text-xs text-[#F4EFE6] bg-[#161514] px-2 py-0.5 rounded font-bold mt-0.5">04</span>
+                  <p class="leading-relaxed">
+                    Strengthened platform reliability and security by scoping API endpoints, adding permission checks and automated tests, and adding a 51-test suite for edge cases.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3 bg-white border border-[#161514]/15 p-4 rounded-sm shadow-xs hover:border-[#161514] transition-colors">
+                  <span class="font-mono text-xs text-[#F4EFE6] bg-[#161514] px-2 py-0.5 rounded font-bold mt-0.5">05</span>
+                  <p class="leading-relaxed">
+                    Improved messaging with real-time auto-sync and attachments, and delivered branded error pages and other platform fixes.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Right: Interactive NurseWay Preview Carousel -->
+              <div class="lg:col-span-5 space-y-4">
+                
+                <div class="bg-[#1F1E1C] border-2 border-[#161514] p-3 rounded shadow-[4px_4px_0_#161514]" data-carousel data-carousel-auto data-carousel-delay="3800">
+                  
+                  <div class="flex items-center justify-between font-mono text-[10px] text-stone-300 pb-2 border-b border-stone-700">
+                    <a href="https://nursewayllc.info/" target="_blank" rel="noopener noreferrer" class="text-[#E9A825] hover:underline font-bold flex items-center gap-1">
+                      <span>NURSEWAY PLATFORM</span>
+                      <span>↗</span>
+                    </a>
+                    <span data-carousel-index class="bg-black/50 px-2 py-0.5 rounded">01 / 03</span>
+                  </div>
+
+                  <!-- Carousel Viewer -->
+                  <div class="relative aspect-[16/10] bg-black rounded overflow-hidden mt-2 group">
+                    <div class="flex h-full transition-transform duration-500 ease-out" data-carousel-track>
+                      <div class="min-w-full h-full">
+                        <img src="./assets/projects/NURSEWAY LANDING.png" alt="NurseWay Landing Page" class="w-full h-full object-cover" />
+                      </div>
+                      <div class="min-w-full h-full">
+                        <img src="./assets/projects/NURSEWAY DASHBOARD.png" alt="NurseWay Dashboard" class="w-full h-full object-cover" />
+                      </div>
+                      <div class="min-w-full h-full">
+                        <img src="./assets/projects/NURSEWAY CAREERS.png" alt="NurseWay Careers Portal" class="w-full h-full object-cover" />
+                      </div>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="absolute inset-y-0 left-0 flex items-center p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button data-carousel-prev class="w-7 h-7 bg-black/70 hover:bg-[#D85827] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">
+                        ❮
+                      </button>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button data-carousel-next class="w-7 h-7 bg-black/70 hover:bg-[#D85827] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">
+                        ❯
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Verified Stack Tags -->
+                  <div class="flex flex-wrap gap-1.5 mt-3 pt-2 border-t border-stone-700 font-mono text-[10px]">
+                    <span class="bg-stone-800 text-stone-300 px-2 py-0.5 rounded">Laravel</span>
+                    <span class="bg-stone-800 text-stone-300 px-2 py-0.5 rounded">Tailwind CSS</span>
+                    <span class="bg-stone-800 text-stone-300 px-2 py-0.5 rounded">REST APIs</span>
+                    <span class="bg-stone-800 text-stone-300 px-2 py-0.5 rounded">Automated Testing</span>
+                    <span class="bg-stone-800 text-stone-300 px-2 py-0.5 rounded">51-Test Suite</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 4: SELECTED PROJECTS CATALOG                         -->
+        <!-- ============================================================ -->
+        <section id="projects" class="pt-20 pb-16">
+          
+          <!-- Section Heading -->
+          <div class="border-b-2 border-[#161514] pb-3 mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-[#78716C] font-semibold">
+                03. Works
+              </span>
+              <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase tracking-[0.05em] text-[#161514] mt-1">
+                Selected Projects
+              </h2>
+            </div>
+
+            <div class="font-mono text-xs text-[#57534E]">
+              FEATURED PRODUCTION & ML SYSTEMS
+            </div>
+          </div>
+
+          <!-- Project Cards Grid -->
+          <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- PROJECT 1: New Century Books OIMS -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg overflow-hidden shadow-[6px_6px_0_#161514] flex flex-col group gsap-reveal-card cassette-card-hover">
+              <!-- Slipcase Top Retro Tape Stripe -->
+              <div class="h-1.5 w-full tape-stripes-horizontal"></div>
+              
+              <div class="p-5 flex items-center justify-between border-b border-[#161514]/15">
+                <div>
+                  <span class="font-mono text-[10px] text-[#78716C] uppercase font-bold tracking-widest">01 · Web Application</span>
+                  <h3 class="font-display font-bold text-2xl text-[#161514] uppercase tracking-wide">New Century Books OIMS</h3>
+                </div>
+                <span class="font-mono text-xs font-bold text-[#F4EFE6] bg-[#161514] px-2.5 py-1 rounded-sm">Front-End</span>
+              </div>
+
+              <!-- Carousel Preview -->
+              <div class="relative h-60 bg-[#161514] overflow-hidden" data-carousel data-carousel-auto data-carousel-delay="3600">
+                <div class="flex h-full transition-transform duration-300 ease-in-out" data-carousel-track>
+                  <div class="min-w-full h-full"><img src="./assets/projects/NCB LOGIN.png" alt="NCB Login" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/NCB LANDIGN.png" alt="NCB Landing" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/NCB BOOKS.png" alt="NCB Books Catalog" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/NCB ADMIN.png" alt="NCB Admin Dashboard" class="w-full h-full object-cover" /></div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="absolute inset-y-0 left-0 flex items-center p-2">
+                  <button data-carousel-prev class="w-7 h-7 bg-black/70 hover:bg-[#E9A825] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">❮</button>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center p-2">
+                  <button data-carousel-next class="w-7 h-7 bg-black/70 hover:bg-[#E9A825] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">❯</button>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/75 px-2 py-0.5 rounded font-mono text-[9px] text-stone-200" data-carousel-index>01 / 04</div>
+              </div>
+
+              <!-- Content Body -->
+              <div class="p-5 flex flex-col flex-1">
+                <p class="text-sm text-[#44403C] leading-relaxed mb-4 flex-1">
+                  Built responsive user interfaces and front-end components for an order and inventory management system using Tailwind CSS and JavaScript within the Laravel framework.
+                </p>
+
+                <!-- Tech Tags -->
+                <div class="flex flex-wrap gap-1.5 mb-5 font-mono text-[10px]">
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Laravel</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Tailwind CSS</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">JavaScript</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">MySQL</span>
+                </div>
+
+                <!-- CLICKABLE GITHUB & LIVE DEMO BUTTONS -->
+                <div class="mt-auto pt-3 border-t border-[#161514]/15 flex items-center gap-3">
+                  <a
+                    href="https://github.com/DioVale2002/ProjectNiLeanRyleugDionard"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#161514] text-[#F4EFE6] hover:bg-[#282724] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://newcenturybooks.onrender.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#E5DCB8] text-[#161514] hover:bg-[#DDD4C4] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <span>Live Demo</span>
+                    <span class="text-[#D85827] font-bold">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 2: PaoPals Siopao Online Store -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg overflow-hidden shadow-[6px_6px_0_#161514] flex flex-col group gsap-reveal-card cassette-card-hover">
+              <div class="h-1.5 w-full tape-stripes-horizontal"></div>
+              
+              <div class="p-5 flex items-center justify-between border-b border-[#161514]/15">
+                <div>
+                  <span class="font-mono text-[10px] text-[#78716C] uppercase font-bold tracking-widest">02 · E-Commerce Platform</span>
+                  <h3 class="font-display font-bold text-2xl text-[#161514] uppercase tracking-wide">PaoPals Siopao Store</h3>
+                </div>
+                <span class="font-mono text-xs font-bold text-[#F4EFE6] bg-[#161514] px-2.5 py-1 rounded-sm">Back-End</span>
+              </div>
+
+              <!-- Carousel Preview -->
+              <div class="relative h-60 bg-[#161514] overflow-hidden" data-carousel data-carousel-auto data-carousel-delay="3800">
+                <div class="flex h-full transition-transform duration-300 ease-in-out" data-carousel-track>
+                  <div class="min-w-full h-full"><img src="./assets/projects/PAO1.jpg" alt="PaoPals 1" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/PAO2.jpg" alt="PaoPals 2" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/PAO3.jpg" alt="PaoPals 3" class="w-full h-full object-cover" /></div>
+                </div>
+
+                <div class="absolute inset-y-0 left-0 flex items-center p-2">
+                  <button data-carousel-prev class="w-7 h-7 bg-black/70 hover:bg-[#D85827] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">❮</button>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center p-2">
+                  <button data-carousel-next class="w-7 h-7 bg-black/70 hover:bg-[#D85827] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">❯</button>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/75 px-2 py-0.5 rounded font-mono text-[9px] text-stone-200" data-carousel-index>01 / 03</div>
+              </div>
+
+              <div class="p-5 flex flex-col flex-1">
+                <p class="text-sm text-[#44403C] leading-relaxed mb-4 flex-1">
+                  Developed backend logic, server-side functionality, and structured database schema for an online store with complete inventory management, order pipelines, and stock tracking.
+                </p>
+
+                <div class="flex flex-wrap gap-1.5 mb-5 font-mono text-[10px]">
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">PHP</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">MySQL</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">JavaScript</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">HTML/CSS</span>
+                </div>
+
+                <!-- CLICKABLE GITHUB & LOCAL PROTOTYPE BUTTONS -->
+                <div class="mt-auto pt-3 border-t border-[#161514]/15 flex items-center gap-3">
+                  <a
+                    href="https://github.com/DMzRs/CSE7_PaoPals"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#161514] text-[#F4EFE6] hover:bg-[#282724] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                  </a>
+                  <span
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#EFE9DC] text-[#78716C] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514]/20 flex items-center justify-center gap-1.5 cursor-default"
+                  >
+                    <span>Local Prototype</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 3: XGBoost Phishing Detection -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg overflow-hidden shadow-[6px_6px_0_#161514] flex flex-col group gsap-reveal-card cassette-card-hover">
+              <div class="h-1.5 w-full tape-stripes-horizontal"></div>
+              
+              <div class="p-5 flex items-center justify-between border-b border-[#161514]/15">
+                <div>
+                  <span class="font-mono text-[10px] text-[#78716C] uppercase font-bold tracking-widest">03 · Security ML</span>
+                  <h3 class="font-display font-bold text-2xl text-[#161514] uppercase tracking-wide">XGBoost Phishing Detection</h3>
+                </div>
+                <span class="font-mono text-xs font-bold text-[#F4EFE6] bg-[#161514] px-2.5 py-1 rounded-sm">Machine Learning</span>
+              </div>
+
+              <!-- Carousel Preview -->
+              <div class="relative h-60 bg-[#161514] overflow-hidden" data-carousel data-carousel-auto data-carousel-delay="4000">
+                <div class="flex h-full transition-transform duration-300 ease-in-out" data-carousel-track>
+                  <div class="min-w-full h-full"><img src="./assets/projects/XG BOOST.png" alt="XGBoost 1" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/XG BOOST ANALYZE.png" alt="XGBoost 2" class="w-full h-full object-cover" /></div>
+                  <div class="min-w-full h-full"><img src="./assets/projects/XG BOOST RESULT.png" alt="XGBoost 3" class="w-full h-full object-cover" /></div>
+                </div>
+
+                <div class="absolute inset-y-0 left-0 flex items-center p-2">
+                  <button data-carousel-prev class="w-7 h-7 bg-black/70 hover:bg-[#C6332E] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">❮</button>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center p-2">
+                  <button data-carousel-next class="w-7 h-7 bg-black/70 hover:bg-[#C6332E] text-white rounded-full flex items-center justify-center font-bold text-xs transition-colors">❯</button>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/75 px-2 py-0.5 rounded font-mono text-[9px] text-stone-200" data-carousel-index>01 / 03</div>
+              </div>
+
+              <div class="p-5 flex flex-col flex-1">
+                <p class="text-sm text-[#44403C] leading-relaxed mb-4 flex-1">
+                  Trained an XGBoost machine learning model to detect phishing emails with high classification accuracy, building Flask backend services to serve real-time predictions to web interfaces.
+                </p>
+
+                <div class="flex flex-wrap gap-1.5 mb-5 font-mono text-[10px]">
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Python</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">XGBoost</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Flask</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Scikit-learn</span>
+                </div>
+
+                <!-- CLICKABLE GITHUB & LIVE DEMO BUTTONS -->
+                <div class="mt-auto pt-3 border-t border-[#161514]/15 flex items-center gap-3">
+                  <a
+                    href="https://github.com/90377Sednaaa/XGBoost-Phishing-Detector"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#161514] text-[#F4EFE6] hover:bg-[#282724] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://huggingface.co/spaces/Sedna90377/Phishing-Detector"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#E5DCB8] text-[#161514] hover:bg-[#DDD4C4] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <span>Live Demo</span>
+                    <span class="text-[#D85827] font-bold">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PROJECT 4: Stress Predictor -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg overflow-hidden shadow-[6px_6px_0_#161514] flex flex-col group gsap-reveal-card cassette-card-hover">
+              <div class="h-1.5 w-full tape-stripes-horizontal"></div>
+              
+              <div class="p-5 flex items-center justify-between border-b border-[#161514]/15">
+                <div>
+                  <span class="font-mono text-[10px] text-[#78716C] uppercase font-bold tracking-widest">04 · Analytics App</span>
+                  <h3 class="font-display font-bold text-2xl text-[#161514] uppercase tracking-wide">Stress Predictor</h3>
+                </div>
+                <span class="font-mono text-xs font-bold text-[#F4EFE6] bg-[#161514] px-2.5 py-1 rounded-sm">Predictive Analytics</span>
+              </div>
+
+              <!-- Static/Preview Image -->
+              <div class="relative h-60 bg-[#161514] overflow-hidden">
+                <img src="./assets/projects/STRESS PREDICTOR.png" alt="Stress Predictor App" class="w-full h-full object-cover" />
+                <div class="absolute bottom-2 right-2 bg-black/75 px-2 py-0.5 rounded font-mono text-[9px] text-stone-200">
+                  STREAMLIT APP
+                </div>
+              </div>
+
+              <div class="p-5 flex flex-col flex-1">
+                <p class="text-sm text-[#44403C] leading-relaxed mb-4 flex-1">
+                  Predictive analytics tool designed to evaluate and predict psychological stress levels based on user metrics, featuring algorithmic modeling and interactive visualizations.
+                </p>
+
+                <div class="flex flex-wrap gap-1.5 mb-5 font-mono text-[10px]">
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Python</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Machine Learning</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Flask</span>
+                  <span class="bg-[#E5DCB8] text-[#161514] px-2.5 py-1 rounded border border-[#161514]/20 font-bold">Streamlit</span>
+                </div>
+
+                <!-- CLICKABLE GITHUB & LIVE DEMO BUTTONS -->
+                <div class="mt-auto pt-3 border-t border-[#161514]/15 flex items-center gap-3">
+                  <a
+                    href="https://github.com/90377Sednaaa/Stress-Level-Prediction"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#161514] text-[#F4EFE6] hover:bg-[#282724] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://student-stress-level-prediction.streamlit.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="tactile-button-sm flex-1 text-center py-2.5 bg-[#E5DCB8] text-[#161514] hover:bg-[#DDD4C4] font-mono text-xs font-bold uppercase rounded-sm border-2 border-[#161514] flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <span>Live Demo</span>
+                    <span class="text-[#D85827] font-bold">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5: TECHNICAL SKILLS                                  -->
+        <!-- ============================================================ -->
+        <section id="skills" class="pt-20 pb-16 gsap-reveal-card">
+          
+          <!-- Section Heading -->
+          <div class="border-b-2 border-[#161514] pb-3 mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-[#78716C] font-semibold">
+                04. Skills
+              </span>
+              <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase tracking-[0.05em] text-[#161514] mt-1">
+                Technical Skills
+              </h2>
+            </div>
+
+            <div class="font-mono text-xs text-[#57534E]">
+              LANGUAGES, FRAMEWORKS & TOOLING
+            </div>
+          </div>
+
+          <!-- Master Skills Housing (Warm vintage Japanese cassette paper packaging) -->
+          <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg p-6 sm:p-8 shadow-[8px_8px_0_#161514] text-[#161514]">
+            <!-- Subtle Vintage Tape Accent Strip -->
+            <div class="h-1.5 w-full tape-stripes-horizontal rounded-t-sm mb-6 opacity-75"></div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              
+              <!-- Channel 1: Languages -->
+              <div class="bg-white border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col">
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#E9A825]"></span>
+                    <span class="font-mono text-xs font-bold text-[#161514] uppercase tracking-wider">01. Languages</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[#78716C] font-semibold">CORE</span>
+                </div>
+
+                <div class="space-y-3 font-mono text-xs flex-1">
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">JavaScript</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Python</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Java</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">PHP</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">SQL</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">HTML5 / CSS3</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Dart</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-[#E9A825]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                </div>
+              </div>
+
+              <!-- Channel 2: Frameworks & Libraries -->
+              <div class="bg-white border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col">
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#D85827]"></span>
+                    <span class="font-mono text-xs font-bold text-[#161514] uppercase tracking-wider">02. Frameworks</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[#78716C] font-semibold">UI / ML</span>
+                </div>
+
+                <div class="space-y-3 font-mono text-xs flex-1">
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Laravel</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Tailwind CSS</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">DaisyUI</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Flask</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Scikit-learn</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-[#D85827]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">ReactJS</span><span class="font-mono text-[10px] text-[#D85827] bg-[#D85827]/10 px-1.5 py-0.5 rounded-xs font-bold">IN PROGRESS</span></div>
+                </div>
+              </div>
+
+              <!-- Channel 3: Databases & Tools -->
+              <div class="bg-white border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col">
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#2B6B82]"></span>
+                    <span class="font-mono text-xs font-bold text-[#161514] uppercase tracking-wider">03. Tools</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[#78716C] font-semibold">INFRA</span>
+                </div>
+
+                <div class="space-y-3 font-mono text-xs flex-1">
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">MySQL</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">PostgreSQL</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Git & GitHub</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Figma / Canva</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Jupyter</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Flutter</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-[#2B6B82]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                </div>
+              </div>
+
+              <!-- Channel 4: Engineering Practices -->
+              <div class="bg-white border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col">
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#872041]"></span>
+                    <span class="font-mono text-xs font-bold text-[#161514] uppercase tracking-wider">04. Practices</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[#78716C] font-semibold">SYSTEMS</span>
+                </div>
+
+                <div class="space-y-3 font-mono text-xs flex-1">
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">UI/UX Design</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">OOP Principles</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Database Schema</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">REST API Design</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Version Control</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                  <div class="flex items-center justify-between"><span class="text-[#161514] font-semibold">Quality Assurance</span><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-[#872041]"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span><span class="w-2 h-2 rounded-xs bg-stone-200"></span></div></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Skills Summary Strip -->
+            <div class="mt-8 pt-5 border-t border-[#161514]/15 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+              <div class="flex items-center gap-2">
+                <span class="text-[#78716C]">CORE FOCUS:</span>
+                <span class="text-[#161514] font-bold">FRONT-END ARCHITECTURE & RESILIENT SYSTEMS</span>
+              </div>
+              <div class="text-[#57534E]">
+                TAILWIND CSS · JAVASCRIPT · LARAVEL · MYSQL · REST APIS
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6: CERTIFICATES & TRAINING                           -->
+        <!-- ============================================================ -->
+        <section id="credentials" class="pt-20 pb-16 gsap-reveal-card">
+          
+          <div class="border-b-2 border-[#161514] pb-3 mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#78716C] font-semibold">
+                <span>05. Qualifications</span>
+                <span>/</span>
+                <span>Certifications & Training</span>
+              </div>
+              <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase tracking-[0.05em] text-[#161514] mt-1">
+                Certifications & Workshops
+              </h2>
+            </div>
+            <div class="font-mono text-xs text-[#57534E]">Certiport & University Credentials</div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Cert 1: Java -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-3">
+                  <span class="font-mono text-[10px] text-[#C6332E] font-bold uppercase">CERTIPORT</span>
+                  <img src="./assets/certificates/JavaLogo.png" alt="Java Logo" class="h-6 w-auto" />
+                </div>
+                <h4 class="font-display font-bold text-xl uppercase text-[#161514] mb-1">IT Specialist in Java</h4>
+                <p class="text-xs text-[#57534E]">Industry credential verifying core object-oriented programming in Java.</p>
+              </div>
+              <a
+                href="https://www.credly.com/badges/827e547d-acc5-4bae-ae18-f049d26efa03/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 pt-3 border-t border-[#161514]/15 font-mono text-[11px] text-emerald-800 hover:text-emerald-950 font-bold flex items-center justify-between group/link transition-colors"
+                title="Verify Java certification on Credly"
+              >
+                <span class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span>Verified Credential</span>
+                </span>
+                <span class="text-stone-400 group-hover/link:text-emerald-800 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all">↗</span>
+              </a>
+            </div>
+
+            <!-- Cert 2: Databases -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-3">
+                  <span class="font-mono text-[10px] text-[#2B6B82] font-bold uppercase">CERTIPORT</span>
+                  <img src="./assets/certificates/databasesLogo.png" alt="Database Logo" class="h-6 w-auto" />
+                </div>
+                <h4 class="font-display font-bold text-xl uppercase text-[#161514] mb-1">IT Specialist in Databases</h4>
+                <p class="text-xs text-[#57534E]">Credential certifying relational database design, querying, and SQL optimization.</p>
+              </div>
+              <a
+                href="https://www.credly.com/badges/fdeacb1b-637f-43ed-a437-8787ac4b1fea/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 pt-3 border-t border-[#161514]/15 font-mono text-[11px] text-emerald-800 hover:text-emerald-950 font-bold flex items-center justify-between group/link transition-colors"
+                title="Verify Databases certification on Credly"
+              >
+                <span class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span>Verified Credential</span>
+                </span>
+                <span class="text-stone-400 group-hover/link:text-emerald-800 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all">↗</span>
+              </a>
+            </div>
+
+            <!-- Cert 3: Network Security -->
+            <div class="bg-[#FAF7F2] border-2 border-[#161514] p-5 rounded shadow-[4px_4px_0_#161514] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between pb-3 border-b border-[#161514]/15 mb-3">
+                  <span class="font-mono text-[10px] text-[#872041] font-bold uppercase">CERTIPORT</span>
+                  <img src="./assets/certificates/ImageSecurity.png" alt="Security Logo" class="h-6 w-auto" />
+                </div>
+                <h4 class="font-display font-bold text-xl uppercase text-[#161514] mb-1">IT Specialist in NetSec</h4>
+                <p class="text-xs text-[#57534E]">Certification in network security infrastructure, defense, and endpoint control.</p>
+              </div>
+              <a
+                href="https://www.credly.com/badges/a060a33e-9e43-4a22-a3e2-f1b20054ed8b/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 pt-3 border-t border-[#161514]/15 font-mono text-[11px] text-emerald-800 hover:text-emerald-950 font-bold flex items-center justify-between group/link transition-colors"
+                title="Verify Network Security certification on Credly"
+              >
+                <span class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  <span>Verified Credential</span>
+                </span>
+                <span class="text-stone-400 group-hover/link:text-emerald-800 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all">↗</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Academic Workshops List -->
+          <div class="mt-6 bg-[#FAF7F2] border-2 border-[#161514] p-6 rounded shadow-[4px_4px_0_#161514]">
+            <div class="font-mono text-xs text-[#161514] font-bold uppercase tracking-wider mb-4 border-b border-[#161514]/15 pb-2">
+              ACADEMIC WORKSHOPS & TRAINING (UNIVERSITY OF MINDANAO)
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+              <div class="p-3 bg-white border border-stone-300 rounded">
+                <div class="font-bold text-[#161514]">Git & GitHub Workshop</div>
+                <div class="text-[11px] text-[#78716C] mt-0.5">Version control workflows</div>
+              </div>
+              <div class="p-3 bg-white border border-stone-300 rounded">
+                <div class="font-bold text-[#161514]">JavaScript Workshop</div>
+                <div class="text-[11px] text-[#78716C] mt-0.5">Modern web architectures</div>
+              </div>
+              <div class="p-3 bg-white border border-stone-300 rounded">
+                <div class="font-bold text-[#161514]">QA Seminar</div>
+                <div class="text-[11px] text-[#78716C] mt-0.5">Software test methodology</div>
+              </div>
+              <div class="p-3 bg-white border border-stone-300 rounded">
+                <div class="font-bold text-[#161514]">Workplace Readiness</div>
+                <div class="text-[11px] text-[#78716C] mt-0.5">Professional engineering ethics</div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7: CONTACT                                           -->
+        <!-- ============================================================ -->
+        <section id="contact" class="pt-20 pb-16 gsap-reveal-card">
+          
+          <div class="border-b-2 border-[#161514] pb-3 mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#78716C] font-semibold">
+                <span>06. Contact</span>
+                <span>/</span>
+                <span>Get In Touch</span>
+              </div>
+              <h2 class="font-display font-bold text-4xl sm:text-5xl uppercase tracking-[0.05em] text-[#161514] mt-1">
+                Let's Connect
+              </h2>
+            </div>
+            <div class="font-mono text-xs text-[#161514] bg-[#E9A825] border border-[#161514] px-3 py-1 rounded-sm font-bold shadow-[2px_2px_0_#161514]">
+              AVAILABLE FOR HIRE
+            </div>
+          </div>
+
+          <!-- Master Contact Console -->
+          <div class="bg-[#FAF7F2] border-2 border-[#161514] rounded-lg p-6 sm:p-10 shadow-[8px_8px_0_#161514]">
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+              
+              <!-- Left Statement -->
+              <div class="lg:col-span-6 space-y-5">
+                <h3 class="font-display font-bold text-3xl sm:text-4xl uppercase tracking-wide text-[#161514]">
+                  Let us build something exceptional.
+                </h3>
+                <p class="text-base text-[#44403C] leading-relaxed font-normal">
+                  Open to front-end engineering roles, UI architecture internships, and purposeful web collaborations. Reach out directly via email or any of my links below.
+                </p>
+
+                <!-- Opportunities Available Tags -->
+                <div class="pt-4 border-t border-[#161514]/15">
+                  <div class="font-mono text-[10px] uppercase text-[#78716C] tracking-widest mb-3 font-bold">
+                    AVAILABLE FOR
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="font-mono text-xs bg-[#161514] text-[#F4EFE6] px-3 py-1 rounded-sm">Front-End Roles</span>
+                    <span class="font-mono text-xs bg-[#161514] text-[#F4EFE6] px-3 py-1 rounded-sm">UI/UX Systems</span>
+                    <span class="font-mono text-xs bg-[#161514] text-[#F4EFE6] px-3 py-1 rounded-sm">Internships</span>
+                    <span class="font-mono text-xs bg-[#161514] text-[#F4EFE6] px-3 py-1 rounded-sm">Freelance</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Contact Links Plate -->
+              <div class="lg:col-span-6 space-y-3 font-mono text-sm">
+                
+                <!-- Email -->
+                <a
+                  href="mailto:l.murillo.546842@umindanao.edu.ph"
+                  class="tactile-button-sm flex items-center justify-between p-4 bg-white border-2 border-[#161514] rounded hover:bg-[#EBE4D5] transition-colors group"
+                >
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-[#161514] text-[#F4EFE6] flex items-center justify-center font-bold text-xs">
+                      @
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-[#78716C] uppercase font-bold">Email</div>
+                      <div class="text-xs sm:text-sm font-bold text-[#161514]">l.murillo.546842@umindanao.edu.ph</div>
+                    </div>
+                  </div>
+                  <span class="text-[#E9A825] group-hover:translate-x-1 transition-transform font-bold">→</span>
+                </a>
+
+                <!-- Phone -->
+                <a
+                  href="tel:+639164371517"
+                  class="tactile-button-sm flex items-center justify-between p-4 bg-white border-2 border-[#161514] rounded hover:bg-[#EBE4D5] transition-colors group"
+                >
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-[#161514] text-[#F4EFE6] flex items-center justify-center font-bold text-xs">
+                      PH
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-[#78716C] uppercase font-bold">Phone</div>
+                      <div class="text-xs sm:text-sm font-bold text-[#161514]">+63 916 437 1517</div>
+                    </div>
+                  </div>
+                  <span class="text-[#E9A825] group-hover:translate-x-1 transition-transform font-bold">→</span>
+                </a>
+
+                <!-- GitHub -->
+                <a
+                  href="https://github.com/90377Sednaaa"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="tactile-button-sm flex items-center justify-between p-4 bg-white border-2 border-[#161514] rounded hover:bg-[#EBE4D5] transition-colors group"
+                >
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-[#161514] text-[#F4EFE6] flex items-center justify-center font-bold text-xs">
+                      GH
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-[#78716C] uppercase font-bold">GitHub</div>
+                      <div class="text-xs sm:text-sm font-bold text-[#161514]">github.com/90377Sednaaa</div>
+                    </div>
+                  </div>
+                  <span class="text-[#E9A825] group-hover:translate-x-1 transition-transform font-bold">→</span>
+                </a>
+
+                <!-- Facebook -->
+                <a
+                  href="https://facebook.com/90377Sednaaa"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="tactile-button-sm flex items-center justify-between p-4 bg-white border-2 border-[#161514] rounded hover:bg-[#EBE4D5] transition-colors group"
+                >
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-[#161514] text-[#F4EFE6] flex items-center justify-center font-bold text-xs">
+                      FB
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-[#78716C] uppercase font-bold">Facebook</div>
+                      <div class="text-xs sm:text-sm font-bold text-[#161514]">facebook.com/90377Sednaaa</div>
+                    </div>
+                  </div>
+                  <span class="text-[#E9A825] group-hover:translate-x-1 transition-transform font-bold">→</span>
+                </a>
+
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- MASTER CASSETTE FOOTER -->
+      <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 border-t-2 border-[#161514]">
+        <!-- Subtle Vintage 5-color accent line -->
+        <div class="flex h-1.5 w-full rounded-sm overflow-hidden mb-6">
+          <span class="flex-1 bg-[#E9A825]"></span>
+          <span class="flex-1 bg-[#D85827]"></span>
+          <span class="flex-1 bg-[#C6332E]"></span>
+          <span class="flex-1 bg-[#872041]"></span>
+          <span class="flex-1 bg-[#2B6B82]"></span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#57534E]">
+          <div class="flex items-center gap-3">
+            <span class="font-bold text-[#161514]">LEAN MURILLO</span>
+            <span class="text-stone-400">·</span>
+            <span>Front-End Developer & UI Designer</span>
+          </div>
+          <div>
+            © 2026 Lean Murillo. All rights reserved.
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CLASSIC PORTFOLIO (PRESERVED VERSION)                        -->
+    <!-- ============================================================ -->
+    <div id="portfolio-old" class="hidden min-h-screen bg-[#EBE4D1] text-gray-900">
+<header
       class="w-full fixed top-0 left-0 z-50 bg-[#EBE4D1] border-b border-[#8a8091]"
     >
       <nav
         class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between"
       >
-        <a href="#main" class="font-bold text-xl">Sedna.Dev</a>
+        <a href="#classic-hero" class="font-bold text-xl">Sedna.Dev</a>
 
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 sm:gap-6">
+          <!-- Switcher back to new edition -->
+          <button
+            data-switch-version="new"
+            class="px-3 py-1 text-xs font-mono font-bold bg-[#161514] text-[#F4EFE6] hover:bg-[#D85827] rounded transition-colors shadow-sm cursor-pointer flex items-center gap-1.5"
+            title="Switch to New Edition"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E9A825]"></span>
+            <span>NEW</span>
+          </button>
           <a
-            href="#about"
+            href="#classic-about"
             class="hover:border-b-green-300 hover:text-shadow-amber-50 hover:opacity-70 transition-all"
             >About</a
           >
           <a
-            href="#skills"
+            href="#classic-skills"
             class="hover:border-b-green-300 hover:text-shadow-amber-50 hover:opacity-70 transition-all"
             >Skills</a
           >
-          <a href="#projects" class="hover:opacity-70 transition-all"
+          <a href="#classic-projects" class="hover:opacity-70 transition-all"
             >Projects</a
           >
-          <a href="#contact" class="hover:opacity-70 transition-all">Contact</a>
+          <a href="#classic-contact" class="hover:opacity-70 transition-all">Contact</a>
         </div>
       </nav>
     </header>
 
     <main id="main" class="max-w-5xl mx-auto px-6 pt-40">
-      <section id="hero" class="max-w-6xl mx-auto pt-24 pb-16">
+      <section id="classic-hero" class="max-w-6xl mx-auto pt-24 pb-16">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="flex flex-col order-last lg:order-0 gap-6">
             <h1 class="font-bold text-7xl uppercase leading-tight">
@@ -52,7 +1373,7 @@
 
             <div class="flex items-center gap-7 mt-4">
               <a
-                href="#projects"
+                href="#classic-projects"
                 class="px-6 py-3 max-w-fit bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors shadow-lg"
               >
                 View My Work
@@ -117,8 +1438,8 @@
         </div>
       </section>
 
-      <section id="about" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
-        <!-- Your existing header — untouched -->
+      <section id="classic-about" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
+        <!-- Your existing header - untouched -->
         <div class="reveal flex items-center gap-6">
           <div class="text-xl uppercase tracking-widest">About</div>
           <div
@@ -134,7 +1455,7 @@
           Three years of turning design systems into production code. I work at
           the intersection of
           <span class="text-stone-900 font-medium">systems thinking</span> and
-          <span class="text-stone-900 font-medium">visual craft</span> — equally
+          <span class="text-stone-900 font-medium">visual craft</span> - equally
           obsessed with the grid and the pixel, the component and the concept.
           Currently studying Computer Science at the
           <span class="text-stone-900 font-medium">University of Mindanao</span
@@ -152,7 +1473,7 @@
               <span>01 // background</span>
               <span
                 class="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
-                >↗</span
+                >▹</span
               >
             </div>
             <h3 class="text-base font-semibold text-white mb-3">
@@ -175,7 +1496,7 @@
               <span>02 // short-term</span>
               <span
                 class="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
-                >↗</span
+                >▹</span
               >
             </div>
             <h3 class="text-base font-semibold text-white mb-3">
@@ -207,14 +1528,14 @@
               <span>03 // vision</span>
               <span
                 class="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
-                >↗</span
+                >▹</span
               >
             </div>
             <h3 class="text-base font-semibold text-white mb-3">
               The long game
             </h3>
             <p class="text-stone-300 text-md leading-relaxed">
-              Lead Front-End Engineer architecting scalable design systems —
+              Lead Front-End Engineer architecting scalable design systems -
               building products that set the bar for performance, accessibility,
               and user experience.
             </p>
@@ -222,7 +1543,7 @@
         </div>
       </section>
 
-      <section id="skills" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
+      <section id="classic-skills" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
         <div class="flex items-center w-full h-full gap-6">
           <div class="text-xl uppercase tracking-widest">Skills</div>
           <div
@@ -288,17 +1609,17 @@
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M13.0164 2C10.8193 2 9.03825 3.72453 9.03825 5.85185V8.51852H15.9235V9.25926H5.97814C3.78107 9.25926 2 10.9838 2 13.1111L2 18.8889C2 21.0162 3.78107 22.7407 5.97814 22.7407H8.27322V19.4815C8.27322 17.3542 10.0543 15.6296 12.2514 15.6296H19.5956C21.4547 15.6296 22.9617 14.1704 22.9617 12.3704V5.85185C22.9617 3.72453 21.1807 2 18.9836 2H13.0164ZM12.0984 6.74074C12.8589 6.74074 13.4754 6.14378 13.4754 5.40741C13.4754 4.67103 12.8589 4.07407 12.0984 4.07407C11.3378 4.07407 10.7213 4.67103 10.7213 5.40741C10.7213 6.14378 11.3378 6.74074 12.0984 6.74074Z"
-                    fill="url(#paint0_linear_87_8204)"
+                    fill="url(#paint0_linear_87_8204_c1)"
                   />
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M18.9834 30C21.1805 30 22.9616 28.2755 22.9616 26.1482V23.4815L16.0763 23.4815L16.0763 22.7408L26.0217 22.7408C28.2188 22.7408 29.9998 21.0162 29.9998 18.8889V13.1111C29.9998 10.9838 28.2188 9.25928 26.0217 9.25928L23.7266 9.25928V12.5185C23.7266 14.6459 21.9455 16.3704 19.7485 16.3704L12.4042 16.3704C10.5451 16.3704 9.03809 17.8296 9.03809 19.6296L9.03809 26.1482C9.03809 28.2755 10.8192 30 13.0162 30H18.9834ZM19.9015 25.2593C19.1409 25.2593 18.5244 25.8562 18.5244 26.5926C18.5244 27.329 19.1409 27.9259 19.9015 27.9259C20.662 27.9259 21.2785 27.329 21.2785 26.5926C21.2785 25.8562 20.662 25.2593 19.9015 25.2593Z"
-                    fill="url(#paint1_linear_87_8204)"
+                    fill="url(#paint1_linear_87_8204_1)"
                   />
                   <defs>
                     <linearGradient
-                      id="paint0_linear_87_8204"
+                      id="paint0_linear_87_8204_c1"
                       x1="12.4809"
                       y1="2"
                       x2="12.4809"
@@ -309,7 +1630,7 @@
                       <stop offset="1" stop-color="#1565A7" />
                     </linearGradient>
                     <linearGradient
-                      id="paint1_linear_87_8204"
+                      id="paint1_linear_87_8204_1"
                       x1="19.519"
                       y1="9.25928"
                       x2="19.519"
@@ -422,7 +1743,7 @@
                 >
                   <defs>
                     <radialGradient
-                      id="radialGradient-1"
+                      id="radialGradient-1_c1"
                       cx="0.8366"
                       cy="-125.811"
                       r="363.0565"
@@ -436,7 +1757,7 @@
                   </defs>
                   <g>
                     <ellipse
-                      fill="url(#radialGradient-1)"
+                      fill="url(#radialGradient-1_c1)"
                       cx="128"
                       cy="67.3"
                       rx="128"
@@ -593,17 +1914,17 @@
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M13.0164 2C10.8193 2 9.03825 3.72453 9.03825 5.85185V8.51852H15.9235V9.25926H5.97814C3.78107 9.25926 2 10.9838 2 13.1111L2 18.8889C2 21.0162 3.78107 22.7407 5.97814 22.7407H8.27322V19.4815C8.27322 17.3542 10.0543 15.6296 12.2514 15.6296H19.5956C21.4547 15.6296 22.9617 14.1704 22.9617 12.3704V5.85185C22.9617 3.72453 21.1807 2 18.9836 2H13.0164ZM12.0984 6.74074C12.8589 6.74074 13.4754 6.14378 13.4754 5.40741C13.4754 4.67103 12.8589 4.07407 12.0984 4.07407C11.3378 4.07407 10.7213 4.67103 10.7213 5.40741C10.7213 6.14378 11.3378 6.74074 12.0984 6.74074Z"
-                    fill="url(#paint0_linear_87_8204)"
+                    fill="url(#paint0_linear_87_8204_c2)"
                   />
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M18.9834 30C21.1805 30 22.9616 28.2755 22.9616 26.1482V23.4815L16.0763 23.4815L16.0763 22.7408L26.0217 22.7408C28.2188 22.7408 29.9998 21.0162 29.9998 18.8889V13.1111C29.9998 10.9838 28.2188 9.25928 26.0217 9.25928L23.7266 9.25928V12.5185C23.7266 14.6459 21.9455 16.3704 19.7485 16.3704L12.4042 16.3704C10.5451 16.3704 9.03809 17.8296 9.03809 19.6296L9.03809 26.1482C9.03809 28.2755 10.8192 30 13.0162 30H18.9834ZM19.9015 25.2593C19.1409 25.2593 18.5244 25.8562 18.5244 26.5926C18.5244 27.329 19.1409 27.9259 19.9015 27.9259C20.662 27.9259 21.2785 27.329 21.2785 26.5926C21.2785 25.8562 20.662 25.2593 19.9015 25.2593Z"
-                    fill="url(#paint1_linear_87_8204)"
+                    fill="url(#paint1_linear_87_8204_2)"
                   />
                   <defs>
                     <linearGradient
-                      id="paint0_linear_87_8204"
+                      id="paint0_linear_87_8204_c2"
                       x1="12.4809"
                       y1="2"
                       x2="12.4809"
@@ -614,7 +1935,7 @@
                       <stop offset="1" stop-color="#1565A7" />
                     </linearGradient>
                     <linearGradient
-                      id="paint1_linear_87_8204"
+                      id="paint1_linear_87_8204_2"
                       x1="19.519"
                       y1="9.25928"
                       x2="19.519"
@@ -727,7 +2048,7 @@
                 >
                   <defs>
                     <radialGradient
-                      id="radialGradient-1"
+                      id="radialGradient-1_c2"
                       cx="0.8366"
                       cy="-125.811"
                       r="363.0565"
@@ -741,7 +2062,7 @@
                   </defs>
                   <g>
                     <ellipse
-                      fill="url(#radialGradient-1)"
+                      fill="url(#radialGradient-1_c2)"
                       cx="128"
                       cy="67.3"
                       rx="128"
@@ -1094,7 +2415,7 @@
         </div>
       </section>
 
-      <section id="projects" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
+      <section id="classic-projects" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
         <div class="flex items-center w-full h-full gap-6">
           <div class="text-xl uppercase tracking-widest">Projects</div>
           <div
@@ -1407,7 +2728,7 @@
             </div>
           </div>
 
-          <!-- Stress Predictor Card (single image — no prev/next needed) -->
+          <!-- Stress Predictor Card (single image - no prev/next needed) -->
           <div
             class="bg-[#dbd0b0] border border-gray-400/30 rounded-2xl w-full flex flex-col overflow-hidden"
           >
@@ -1461,7 +2782,7 @@
         </div>
       </section>
 
-      <section id="contact" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
+      <section id="classic-contact" class="mt-70 max-w-6xl mx-auto px-6 pb-16">
         <div class="reveal flex items-center gap-6">
           <div class="text-xl uppercase tracking-widest">contact</div>
 
@@ -1473,7 +2794,7 @@
         <!-- Big headline -->
 
         <h2
-          class="reveal mt-4 text-[clamp(48px,8vw,80px)] font-bold uppercase leading-[0.9] tracking-tight text-stone-900"
+          class="reveal mt-4 text-[clamp(48px,8vw,80px)] font-bold uppercase leading-[0.9] tracking-normal text-stone-900"
         >
           LET'S BUILD SOMETHING <span style="color: #ff3b3b">GREAT.</span>
         </h2>
@@ -1500,7 +2821,7 @@
             >
               Open to freelance projects, full-time front-end roles, and
               creative collaborations. Whether you have a finished brief or just
-              a rough idea — let's talk.
+              a rough idea - let's talk.
             </p>
 
             <!-- Contact links -->
@@ -1696,6 +3017,13 @@
         </div>
       </footer>
     </main>
+    </div>
+
+    <!-- GSAP & ScrollTrigger Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>window.gsap || document.write('<script src="node_modules/gsap/dist/gsap.min.js"><\/script>');</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>window.ScrollTrigger || document.write('<script src="node_modules/gsap/dist/ScrollTrigger.min.js"><\/script>');</script>
     <script src="js/app.js"></script>
   </body>
 </html>

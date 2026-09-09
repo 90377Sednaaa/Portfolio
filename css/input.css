@@ -1,14 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
 @theme {
-  --font-sans: "Barlow Condensed", sans-serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-tech: "Chakra Petch", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-jp: "Noto Sans JP", sans-serif;
+
+  --color-cassette-cream: #F4EFE6;
+  --color-cassette-bone: #EBE4D5;
+  --color-cassette-charcoal: #151413;
+  --color-cassette-panel: #1F1E1C;
+  --color-cassette-card: #282724;
+  --color-cassette-border: #3A3835;
+
+  --color-tape-yellow: #E9A825;
+  --color-tape-orange: #D85827;
+  --color-tape-red: #C6332E;
+  --color-tape-wine: #872041;
+  --color-tape-teal: #2B6B82;
+
   --animate-scroll-horizontal: scroll-horizontal 40s linear infinite;
 
   @keyframes scroll-horizontal {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+
+  @keyframes reel-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+}
+
+/* Custom typography utilities with architectural tracking */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-tech {
+  font-family: var(--font-tech);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+.font-jp {
+  font-family: var(--font-jp);
+}
+
+/* Clean, balanced headline letter spacing (prevents glyph collision) */
+.headline-kerning {
+  letter-spacing: 0.055em;
+  line-height: 1.02;
+}
+
+.headline-kerning-lg {
+  letter-spacing: 0.065em;
+  line-height: 1.04;
+}
+
+/* Subtle Technical Millimeter Grid */
+.technical-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(21, 20, 19, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(21, 20, 19, 0.06) 1px, transparent 1px);
+}
+
+.technical-grid-dark {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Vintage 5-color tape racing stripes */
+.tape-stripes-horizontal {
+  background: linear-gradient(
+    to bottom,
+    #E9A825 0%,
+    #E9A825 20%,
+    #D85827 20%,
+    #D85827 40%,
+    #C6332E 40%,
+    #C6332E 60%,
+    #872041 60%,
+    #872041 80%,
+    #2B6B82 80%,
+    #2B6B82 100%
+  );
+}
+
+.tape-stripes-vertical {
+  background: linear-gradient(
+    to right,
+    #E9A825 0%,
+    #E9A825 20%,
+    #D85827 20%,
+    #D85827 40%,
+    #C6332E 40%,
+    #C6332E 60%,
+    #872041 60%,
+    #872041 80%,
+    #2B6B82 80%,
+    #2B6B82 100%
+  );
+}
+
+/* Tactile mechanical button interaction */
+.tactile-button {
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  box-shadow: 0 4px 0 #151413;
+}
+.tactile-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #151413;
+}
+
+.tactile-button-sm {
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  box-shadow: 0 2px 0 #151413;
+}
+.tactile-button-sm:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #151413;
+}
+
+/* Tape reel rotation */
+.reel-rotating {
+  animation: reel-spin 8s linear infinite;
+}
+.group:hover .reel-rotating-hover {
+  animation: reel-spin 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-rotating,
+  .reel-rotating-hover {
+    animation: none !important;
+  }
+}
+
+/* Subtle CRT Scanline effect */
+.crt-scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 3px;
+  pointer-events: none;
+}
+
+/* Die-cut cassette corner notch */
+.cassette-shell {
+  border: 2px solid #2B2A27;
+  border-radius: 12px;
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================ */
+/* VINTAGE CASSETTE PACKAGING & TACTILE SLIPCASE SYSTEM         */
+/* ============================================================ */
+
+/* Tactile Vintage Cassette Slipcase Card Hover */
+.cassette-card-hover {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.cassette-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0 #161514;
+}
+
+/* Version switcher active button styling */
+.active-version {
+  background-color: #161514 !important;
+  color: #F4EFE6 !important;
+}
+
+/* Tape player paused state */
+.tape-paused .reel-rotating,
+.tape-paused .reel-rotating-hover {
+  animation-play-state: paused !important;
 }
 
